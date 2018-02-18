@@ -9,8 +9,8 @@
 
 <h2>Before running tests - disable popup blocker</h2>
 <button onclick="setTimeout(function() {
-    open('about:blank', '_blank');
-    open('about:blank', '_blank');
+    open('about:blank', '1', '_blank');
+    open('about:blank', '2', '_blank');
 }, 100)">test popup blocker (should open 2 windows)</button>
 
 <script>
@@ -42,7 +42,7 @@
 
         if (i) {
             i -= 1;
-            testWindow = open(url);
+            testWindow = open(url, url + i, '_blank');
         }
     };
 
