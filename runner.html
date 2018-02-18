@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TODO</title>
+    <title>Tst Runner</title>
 </head>
 <body>
 
 <h2>Before running tests - disable popup blocker</h2>
-<button onclick="setTimeout(function() { open('about:blank'); open('about:blank'); }, 100)">test popup blocker</button>
+<button onclick="setTimeout(function() {
+    open('about:blank', '_blank');
+    open('about:blank', '_blank');
+}, 100)">test popup blocker (should open 2 windows)</button>
 
 <script>
     var jobs = [
-        [10, './script-init-test_json-parse.html'],
-        [10, './script-init-test_inline-script.html']
+        [25, './script-init-test_json-parse.html'],
+        [25, './script-init-test_inline-script.html']
     ];
     var i = 0;
     var url = null;
@@ -54,8 +57,13 @@
             });
         });
 
+        Object.keys(means).forEach(function (key) {
+            means[key] = parseFloat(means[key].toFixed(4));
+        });
+
         var log = document.createElement('pre');
-        log.innerHTML = 'URL = ' + url + +'\n'
+        log.innerHTML = '<hr />'
+            + 'URL = ' + url + '\n'
             + 'N = ' + results.length + '\n'
             + 'Mean values = ' + JSON.stringify(means, null, 4);
         document.body.appendChild(log);
@@ -68,6 +76,9 @@
     };
 
 </script>
+
+<br/>
+<br/>
 
 <button onclick="runTest();">RUN</button>
 
