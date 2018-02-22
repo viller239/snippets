@@ -1,0 +1,10 @@
+<h1>goto-A.html</h1>
+<h1>will redirect on load unless hash = #nogo</h1>
+<script>
+    if (window.location.hash !== '#nogo') {
+        window.history.replaceState('', '', '#nogo');
+        setTimeout(function () {
+            window.open('./A.html', '_top');
+        });
+    }
+</script>
