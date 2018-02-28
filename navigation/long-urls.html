@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    [100, 1000, 2000, 3000, 5000, 10000].forEach(function (n) {
+        var payload = '';
+        var i = n;
+        while (i) {
+            i -= 1;
+            payload += String.fromCharCode((i % 20) + 97);
+        }
+        var a = document.createElement('a');
+        a.style.display = 'block';
+        a.target = '_blank';
+        a.href = 'https://www.google.com/search?q=' + payload;
+        a.innerHTML = 'target=' + a.target + '; href.length=' + a.href.length;
+        document.body.appendChild(a);
+    });
+</script>
+</body>
+</html>
