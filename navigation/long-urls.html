@@ -9,17 +9,17 @@
 </head>
 <body>
 <script>
-    [100, 1000, 2000, 3000, 5000, 10000].forEach(function (n) {
+    [30, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46].forEach(function (n) {
         var payload = '';
-        var i = n;
-        while (i) {
+        var i = Math.pow(2, n / 4);
+        while (i > 0) {
             i -= 1;
-            payload += String.fromCharCode((i % 20) + 97);
+            payload += String.fromCharCode((i % 2000) + 10);
         }
         var a = document.createElement('a');
         a.style.display = 'block';
         a.target = '_blank';
-        a.href = 'https://www.google.com/search?q=' + payload;
+        a.href = 'https://www.google.com/search?q=' + encodeURIComponent(payload);
         a.innerHTML = 'target=' + a.target + '; href.length=' + a.href.length;
         document.body.appendChild(a);
     });
